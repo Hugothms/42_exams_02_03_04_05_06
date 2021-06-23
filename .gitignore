@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+exam03/mini
+exam03/test
+exam04/microshell
