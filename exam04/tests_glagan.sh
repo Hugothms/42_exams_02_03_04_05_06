@@ -12,9 +12,9 @@ test_line () {
 	fi
 	pid=$( pgrep microshell )
 	printf "\e[0;31m"
-	lsof -c microshell | grep $pid | grep -v cwd | grep -v txt | grep -v 0r | grep -v 1w | grep -v 2u | grep microshel
+	lsof -c microshell | grep $pid | grep -v cwd | grep -v txt | grep -v 0r | grep -v 1w | grep -v 2u | grep microshell
 	printf "\e[0m"
-	kill -9 $pid
+	# kill -9 $pid
 	wait $pid 2>/dev/null
 	#cat -e out.res > out
 }
@@ -49,5 +49,6 @@ test_line /bin/cat subject.fr.txt ";" /bin/cat subject.fr.txt "|" /usr/bin/grep 
 test_line ";" /bin/cat subject.fr.txt ";" /bin/cat subject.fr.txt "|" /usr/bin/grep a "|" /usr/bin/grep b "|" /usr/bin/grep z ";" /bin/cat subject.fr.txt
 test_line blah "|" /bin/echo OK
 test_line blah "|" /bin/echo OK ";"
+test_line ";" "|" ";"
 printf "\e[1;32mDone\e[0m\n"
 rm -rf microshell.dSYM leaks.res
