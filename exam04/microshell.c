@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:53 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/24 15:34:17 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/24 15:58:41 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void execute(char** cmd, char** env)
 				fatal();
 			close(fd_pipe[0]);
 			close(fd_pipe[1]);
-			++nb_wait;
+			nb_wait++;
 			cmd = find_next_pipe(cmd); // Goes to the next command to be executed, just after first pipe met
 		}
 	}
@@ -169,7 +169,6 @@ int main(int ac, char** av, char** env)
 			builtin_cd(cmd);
 		else
 			execute(cmd, env);
-		free(cmd);
 	}
 	return 0;
 }
