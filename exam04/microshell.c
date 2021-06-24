@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:53 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/24 14:55:58 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/24 15:34:17 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,11 @@ void execute(char** cmd, char** env)
 			fatal();
 		if (!pid) // Son do the pipes and then execute only the part of the command before next pipe.
 		{
-
-			if (dup2(fd_in, STDIN_FILENO) < 0)
+			if (dup2(fd_in, STDIN_FILENO) < 0) // Really important to protect syscalls using fd, tests with wrong fds will be done during grademe
 				fatal();
-			if (find_next_pipe(cmd) && dup2(fd_pipe[1], STDOUT_FILENO) < 0) // If there is still a pipe after this command
-				fatal();
+			if (find_next_pipe(cmd)) // If there is still a pipe after this command
+				if (dup2(fd_pipe[1], STDOUT_FILENO) < 0)
+					fatal();
 			close(fd_in); // Closing all fds to avoid leaking files descriptors
 			close(fd_pipe[0]);
 			close(fd_pipe[1]);
@@ -132,7 +132,7 @@ void execute(char** cmd, char** env)
 		}
 		else // Parent is just saving fd_pipe[0] for next son's execution and correctly closing pipes
 		{
-			if (dup2(fd_pipe[0], fd_in) < 0) // Really important to protect syscalls using fd, tests with wrong fds will be done during grademe
+			if (dup2(fd_pipe[0], fd_in) < 0)
 				fatal();
 			close(fd_pipe[0]);
 			close(fd_pipe[1]);
