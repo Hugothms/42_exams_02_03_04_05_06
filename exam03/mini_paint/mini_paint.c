@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:27 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/23 17:08:27 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:13:28 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int parse(FILE *file, drawing *drawing)
 {
 	char	background;
 
-	int scan_ret = fscanf(file,"%d %d %c\n", &drawing->width, &drawing->height, &background);
+	int scan_ret = fscanf(file, "%d %d %c\n", &drawing->width, &drawing->height, &background);
 	if (scan_ret == 3)
 	{
 		if (drawing->width < 1 || drawing->width > 300 || drawing->height < 1 || drawing->height > 300)
@@ -121,7 +121,7 @@ int execute(FILE *file)
 
 	if (!parse(file, &drawing))
 	{
-		while ((scan_ret = fscanf(file,"%c %f %f %f %c\n", &circle.type, &circle.x, &circle.y, &circle.radius, &circle.color)) == 5)
+		while ((scan_ret = fscanf(file, "%c %f %f %f %c\n", &circle.type, &circle.x, &circle.y, &circle.radius, &circle.color)) == 5)
 		{
 			if (apply_op(&circle, &drawing))
 				return (1);

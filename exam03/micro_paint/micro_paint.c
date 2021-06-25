@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:29 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/23 17:08:30 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:12:19 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void execute_one(rectangle *rect, drawing *drawing, int x, int y)
 	return;
 }
 
-int apply_op(rectangle *rect,drawing *drawing)
+int apply_op(rectangle *rect, drawing *drawing)
 {
 	if (rect->width <= 0.0 || rect->height <= 0.0 || (rect->type != 'R' && rect->type != 'r'))
 		return (1);
@@ -109,7 +109,7 @@ int execute(FILE *file)
 
 	if (!parse(file, &drawing))
 	{
-		while ((scan_ret = fscanf(file,"%c %f %f %f %f %c\n", &rect.type, &rect.x, &rect.y, &rect.width, &rect.height, &rect.color)) == 6)
+		while ((scan_ret = fscanf(file, "%c %f %f %f %f %c\n", &rect.type, &rect.x, &rect.y, &rect.width, &rect.height, &rect.color)) == 6)
 		{
 			if (apply_op(&rect, &drawing))
 				return (1);
@@ -129,7 +129,7 @@ int main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		file = fopen(argv[1],"r");
+		file = fopen(argv[1], "r");
 		if (file && !execute(file))
 			return (0);
 		ft_putstr("Error: Operation file corrupted\n");
