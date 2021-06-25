@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:29:21 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/25 09:28:29 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/25 13:29:25 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	size_cmd_char(char **cmd, char *str)
 	if (!cmd)
 		return 0;
 	int i = -1;
-	while(cmd[++i])
+	while (cmd[++i])
 		if (!strcmp(cmd[i], str))
 			return i;
 	return i;
@@ -47,11 +47,11 @@ int	size_cmd_char(char **cmd, char *str)
 char	**add_cmd(char **argv, int *i)
 {
 	int size = size_cmd_char(&argv[*i], ";");
-	if(!size)
+	if (!size)
 		return NULL;
 	char **cmd = malloc(sizeof(*cmd) * (size + 1));
 	int j = -1;
-	while(++j < size)
+	while (++j < size)
 		cmd[j] = argv[*i + j];
 	cmd[j] = NULL;
 	*i += size;
@@ -98,7 +98,7 @@ void execute(char **cmd, char **env)
 
 	if ((fd_in = dup(STDIN_FILENO)) < 0)
 		fatal();
-	while(cmd)
+	while (cmd)
 	{
 		if (pipe(fd_pipe) < 0 || (pid = fork()) < 0)
 			fatal();
@@ -109,7 +109,7 @@ void execute(char **cmd, char **env)
 			if (find_next_pipe(cmd))
 			{
 				if (dup2(fd_pipe[1], STDOUT_FILENO) < 0)
-					fatal();;
+					fatal();
 			}
 			close(fd_in);
 			close(fd_pipe[0]);
@@ -150,7 +150,7 @@ int main(int argc, char **argv, char **env)
 	char	**cmd = NULL;
 	int 	i = 0;
 
-	while(++i < argc)
+	while (++i < argc)
 	{
 		if (!(cmd = add_cmd(argv, &i)))
 			continue;
