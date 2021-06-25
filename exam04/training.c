@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:29:21 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/24 16:51:28 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/25 09:28:29 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int ft_strlen(char *str)
 void error(char *str)
 {
 	write(STDERR_FILENO, str, ft_strlen(str));
-	exit(1);
 }
 
 void fatal()
