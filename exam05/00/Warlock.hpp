@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/28 14:52:54 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/28 17:33:22 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,5 @@ public:
 		std::cout << name << ": I am " << name << ", " << title << " !" << std::endl;
 	}
 };
-
-std::ostream &operator<<(std::ostream& ostream, const Warlock& self)
-{
-	ostream << "";
-	return ostream;
-}
 
 #endif
