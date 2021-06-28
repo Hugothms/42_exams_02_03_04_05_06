@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dummy.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 14:40:47 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/28 17:03:29 by hthomas          ###   ########.fr       */
+/*   Created: 2021/06/28 16:25:19 by hthomas           #+#    #+#             */
+/*   Updated: 2021/06/28 16:35:57 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Warlock.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
+#ifndef DUMMY_HPP
+# define DUMMY_HPP
 
-int main()
+# include <iostream>
+
+# include "ATarget.hpp"
+
+class Dummy: public ATarget
 {
-	Warlock richard("Richard", "the Titled");
+public:
+	Dummy():
+	ATarget("Target Practice Dummy")
+	{}
 
-	Dummy bob;
-	Fwoosh* fwoosh = new Fwoosh();
+	ATarget *clone() const
+	{
+		return new Dummy(*this);
+	}
+};
 
-	richard.learnSpell(fwoosh);
-
-	richard.introduce();
-	richard.launchSpell("Fwoosh", bob);
-
-	richard.forgetSpell("Fwoosh");
-	richard.launchSpell("Fwoosh", bob);
-}
+#endif
