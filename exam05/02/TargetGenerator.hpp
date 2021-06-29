@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 16:02:21 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 17:13:55 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,29 @@ using namespace std;
 class TargetGenerator
 {
 private:
-	/* data */
+	map<string, ATarget*> targets;
 	TargetGenerator(const TargetGenerator& copy);
 	TargetGenerator& operator=(const TargetGenerator& copy);
 public:
-	TargetGenerator();
-	~TargetGenerator();
-	// teaches a target to the generator
-	void learnTargetType(ATarget*)
-	{
+	TargetGenerator()
+	{}
 
-	}
-	// that makes the generator forget a target type if its known
-	void forgetTargetType(string const &)
-	{
+	~TargetGenerator()
+	{}
 
-	}
-	// that creates a target of the specified type
-	ATarget* createTarget(string const &)
+	void learnTargetType(ATarget* target)
 	{
-		return ;
+		targets.insert(pair<string, ATarget*>(target->getType(), target));
+	}
+
+	void forgetTargetType(const string &target_type)
+	{
+		targets.erase(target_type);
+	}
+
+	ATarget* createTarget(const string &target_type)
+	{
+		return targets[target_type];
 	}
 };
 
