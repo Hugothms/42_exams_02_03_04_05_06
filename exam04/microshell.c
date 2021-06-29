@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:53 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/24 16:44:01 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 15:44:28 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ int main(int argc, char** argv, char** env)
 	{
 		if (!(cmd = add_cmd(argv, &i))) // cmd = command until next ";". i is increased of the size of cmd, argv[i] will now be equal to next ";"
 			continue;
-		if(!strcmp(cmd[0], "cd"))
+		if (!strcmp(cmd[0], "cd"))
 			builtin_cd(cmd);
 		else
 			execute(cmd, env);
