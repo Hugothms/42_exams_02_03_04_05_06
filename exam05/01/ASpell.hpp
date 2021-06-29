@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/28 17:33:07 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 14:36:59 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 
 # include "ATarget.hpp"
+
+class ATarget;
 
 class ASpell
 {
@@ -49,10 +51,7 @@ public:
 
 	virtual ASpell *clone() const = 0;
 
-	void launch(ATarget const& target)
-	{
-		target.getHitBySpell(*this);
-	}
+	void launch(ATarget const& target);
 };
 
 #endif

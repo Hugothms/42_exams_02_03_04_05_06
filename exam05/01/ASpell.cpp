@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dummy.hpp                                          :+:      :+:    :+:   */
+/*   ASpell.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 16:25:19 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 14:32:22 by hthomas          ###   ########.fr       */
+/*   Created: 2021/06/29 13:23:06 by hthomas           #+#    #+#             */
+/*   Updated: 2021/06/29 14:36:29 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DUMMY_HPP
-# define DUMMY_HPP
+# include "ASpell.hpp"
 
-# include <iostream>
-
-# include "ATarget.hpp"
-
-class Dummy: public ATarget
+void ASpell::launch(ATarget const& target)
 {
-public:
-	Dummy():
-	ATarget("Target Practice Dummy")
-	{}
-
-	~Dummy()
-	{}
-
-	ATarget *clone() const
-	{
-		return new Dummy(*this);
-	}
-};
-
-#endif
+	target.getHitBySpell(*this);
+}

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:14:21 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/28 17:32:53 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 14:37:25 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ public:
 	type(type)
 	{}
 
-	~ATarget();
+	~ATarget()
+	{}
 
 	ATarget(const ATarget& copy)
 	{
@@ -44,10 +45,7 @@ public:
 
 	virtual ATarget *clone() const = 0;
 
-	void getHitBySpell(const ASpell &spell) const
-	{
-		std::cout << type <<" has been " << spell.getEffects() << "!" << std::endl;
-	}
+	void getHitBySpell(const ASpell &spell) const;
 };
 
 #endif

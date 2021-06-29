@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/28 17:33:04 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 14:39:42 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Warlock
 private:
 	std::string name;
 	std::string title;
-	std::list<ASpell> know_spells;
+	std::list<ASpell*> known_spells;
 	Warlock();
 	Warlock(const Warlock& copy);
 	Warlock& operator=(const Warlock& copy);
@@ -62,26 +62,26 @@ public:
 
 	void learnSpell(ASpell* spell)
 	{
-		know_spells.push_back(*spell);
+		known_spells.push_back(spell);
 	}
 
 	void forgetSpell(std::string spell_name)
 	{
-		std::list<ASpell>::iterator it;
-		for (it = know_spells.begin(); it != know_spells.end(); it++)
+		std::list<ASpell*>::iterator it;
+		for (it = known_spells.begin(); it != known_spells.end(); it++)
 		{
-			if (it->getName() == spell_name)
-				know_spells.remove(*it);
+			if ((*it)->getName() == spell_name)
+				it = known_spells.erase(it);
 		}
 	}
 
 	void launchSpell(std::string spell_name, ATarget& target)
 	{
-		std::list<ASpell>::iterator it;
-		for (it = know_spells.begin(); it != know_spells.end(); it++)
+		std::list<ASpell*>::iterator it;
+		for (it = known_spells.begin(); it != known_spells.end(); it++)
 		{
-			if (it->getName() == spell_name)
-				it->launch(target);
+			if ((*it)->getName() == spell_name)
+				(*it)->launch(target);
 		}
 	}
 };
