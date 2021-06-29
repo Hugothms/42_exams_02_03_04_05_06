@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 14:36:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 15:47:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@
 
 # include "ATarget.hpp"
 
+using namespace std;
+
 class ATarget;
 
 class ASpell
 {
 private:
-	std::string name;
-	std::string effects;
+	string name;
+	string effects;
 	ASpell();
 	ASpell& operator=(const ASpell& copy);
 public:
-	ASpell(std::string name, std::string effects):
+	ASpell(string name, string effects):
 	name(name), effects(effects)
 	{}
 
@@ -39,12 +41,12 @@ public:
 		effects = copy.getEffects();
 	}
 
-	std::string const &getName() const
+	string const &getName() const
 	{
 		return name;
 	}
 
-	std::string const &getEffects() const
+	string const &getEffects() const
 	{
 		return effects;
 	}

@@ -1,59 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ASpell.hpp                                         :+:      :+:    :+:   */
+/*   TargetGenerator.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:47:47 by hthomas          ###   ########.fr       */
+/*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
+/*   Updated: 2021/06/29 16:02:21 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASPELL_HPP
-# define ASPELL_HPP
+#ifndef TARGETGENERATOR_HPP
+# define TARGETGENERATOR_HPP
 
 # include <iostream>
 
 # include "ATarget.hpp"
 
-class ATarget;
-
 using namespace std;
 
-class ASpell
+class TargetGenerator
 {
 private:
-	string name;
-	string effects;
-	ASpell();
-	ASpell& operator=(const ASpell& copy);
+	/* data */
+	TargetGenerator(const TargetGenerator& copy);
+	TargetGenerator& operator=(const TargetGenerator& copy);
 public:
-	ASpell(string name, string effects):
-	name(name), effects(effects)
-	{}
-
-	~ASpell();
-
-	ASpell(const ASpell& copy)
+	TargetGenerator();
+	~TargetGenerator();
+	// teaches a target to the generator
+	void learnTargetType(ATarget*)
 	{
-		name = copy.getName();
-		effects = copy.getEffects();
-	}
 
-	string const &getName() const
+	}
+	// that makes the generator forget a target type if its known
+	void forgetTargetType(string const &)
 	{
-		return name;
-	}
 
-	string const &getEffects() const
+	}
+	// that creates a target of the specified type
+	ATarget* createTarget(string const &)
 	{
-		return effects;
+		return ;
 	}
-
-	virtual ASpell *clone() const = 0;
-
-	void launch(ATarget const& target);
 };
 
 #endif

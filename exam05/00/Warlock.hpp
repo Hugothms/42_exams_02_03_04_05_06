@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/28 17:33:22 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 15:47:00 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,46 @@
 # include <string>
 # include <iostream>
 
+using namespace std;
+
 class Warlock
 {
 private:
-	std::string name;
-	std::string title;
+	string name;
+	string title;
 	Warlock();
 	Warlock(const Warlock& copy);
 	Warlock& operator=(const Warlock& copy);
 public:
 
-	Warlock(std::string const name, std::string const title): name(name), title(title)
+	Warlock(string const name, string const title): name(name), title(title)
 	{
-		std::cout << name << ": This looks like another boring day." << std::endl;
+		cout << name << ": This looks like another boring day." << endl;
 	}
 
 	~Warlock()
 	{
-		std::cout << name << ": My job here is done!" << std::endl;
+		cout << name << ": My job here is done!" << endl;
 	}
 
-	std::string const &getName() const
+	string const &getName() const
 	{
 		return name;
 	}
 
-	std::string const &getTitle() const
+	string const &getTitle() const
 	{
 		return title;
 	}
 
-	void setTitle(std::string const &title)
+	void setTitle(string const &title)
 	{
 		this->title = title;
 	}
 
 	void introduce() const
 	{
-		std::cout << name << ": I am " << name << ", " << title << " !" << std::endl;
+		cout << name << ": I am " << name << ", " << title << " !" << endl;
 	}
 };
 

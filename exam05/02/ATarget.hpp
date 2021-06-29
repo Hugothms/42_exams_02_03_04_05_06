@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:14:21 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 14:37:25 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 15:47:59 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 
 # include "ASpell.hpp"
 
+using namespace std;
+
 class ASpell;
 
 class ATarget
 {
 private:
-	std::string type;
+	string type;
 	ATarget();
 	ATarget& operator=(const ATarget& copy);
 public:
-	ATarget(std::string type):
+	ATarget(string type):
 	type(type)
 	{}
 
@@ -38,7 +40,7 @@ public:
 		type = copy.getType();
 	}
 
-	std::string const &getType() const
+	string const &getType() const
 	{
 		return type;
 	}

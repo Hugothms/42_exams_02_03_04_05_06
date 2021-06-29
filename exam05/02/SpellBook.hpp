@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:44:18 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 15:58:35 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,18 @@ public:
 		spells.insert(pair<string, ASpell*>(spell->getName(), spell));
 	}
 
-	void forgetSpell(string& const spell_name)
+	void forgetSpell(const string& spell_name)
 	{
 		spells.erase(spell_name);
 	}
 
-	ASpell* createSpell(string& const spell_name)
+	ASpell* createSpell(const string& spell_name)
 	{
-		if ()
+		ASpell* spell = spells[spell_name];
+		if (spell)
+			return spell;
+		return NULL;
 	}
-		that receives a string corresponding to the name of a spell, creates it, and returns it.
-
 };
 
 #endif
