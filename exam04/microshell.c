@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:53 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:44:28 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/30 12:40:30 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 #include <string.h>
 #include <stdio.h>
 
-void ft_putchar_err(char c)
+int ft_strlen(char *str)
 {
-	write(STDERR_FILENO, &c, 1);
+	int i = 0;
+	while (str[i])
+		i++;
+	return i;
 }
 
-void error(char* str)
+void error(char *str)
 {
-	while (*str)
-		ft_putchar_err(*str++);
+	write(STDERR_FILENO, str, ft_strlen(str));
 }
 
 void fatal()
@@ -80,7 +82,9 @@ char** find_next_pipe(char** cmd)
 	return NULL;
 }
 
-// Executes a command
+/**
+ *  Executes a command
+**/
 void exec_cmd(char** cmd, char** env)
 {
 	pid_t	pid;
