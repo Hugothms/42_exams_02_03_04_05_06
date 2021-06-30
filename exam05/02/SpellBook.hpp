@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:58:35 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/06/29 17:13:39 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ private:
 	SpellBook(const SpellBook& copy);
 	SpellBook& operator=(const SpellBook& copy);
 public:
-	SpellBook(){}
-	~SpellBook(){}
+	SpellBook()
+	{}
+
+	~SpellBook()
+	{}
 
 	void learnSpell(ASpell* spell)
 	{
