@@ -5,13 +5,14 @@
 # include <list>
 
 # include "ATarget.hpp"
+# include "SpellBook.hpp"
 
 class Warlock
 {
 private:
 	std::string name;
 	std::string title;
-	list<ASpell* > known_spells;
+	SpellBook book;
 	Warlock();
 	Warlock(const Warlock& copy);
 	Warlock& operator=(const Warlock& copy);
@@ -48,36 +49,17 @@ public:
 
 	void learnSpell(ASpell *spell)
 	{
-		list<ASpell*>::iterator it = known_spells.begin();
-		while(it != known_spells.end())
-		{
-			if ((*it) == spell)
-				return ;
-			it++;
-		}
-		known_spells.push_back(spell);
+		book.learnSpell(spell);
 	}
 
 	void forgetSpell(string spell_name)
 	{
-		list<ASpell*>::iterator it = known_spells.begin();
-		while(it != known_spells.end())
-		{
-			if ((*it)->getName() == spell_name)
-				return known_spells.remove(*it);
-			it++;
-		}
+		book.forgetSpell(spell_name);
 	}
 
 	void launchSpell(string spell_name, ATarget& target)
 	{
-		list<ASpell*>::iterator it = known_spells.begin();
-		while(it != known_spells.end())
-		{
-			if ((*it)->getName() == spell_name)
-				return (*it)->launch(target);
-			it++;
-		}
+		book.launchSpell(spell_name, target);
 	}
 };
 
