@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:47:39 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/07 15:05:02 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ public:
 
 	void learnSpell(ASpell* spell)
 	{
-		known_spells.insert(pair<string, ASpell*>(spell->getName(),spell));
+		known_spells.insert(pair<string, ASpell*>(spell->getName(), spell));
 	}
 
 	void forgetSpell(string spell_name)
@@ -74,7 +74,7 @@ public:
 
 	void launchSpell(string spell_name, ATarget& target)
 	{
-		ASpell* spell = known_spells.operator[](spell_name);
+		ASpell* spell = known_spells[spell_name];
 		if (spell)
 			spell->launch(target);
 	}
