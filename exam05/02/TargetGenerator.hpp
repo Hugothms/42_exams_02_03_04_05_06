@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 17:13:55 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/07 15:29:09 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TARGETGENERATOR_HPP
 
 # include <iostream>
+# include <map>
 
 # include "ATarget.hpp"
 
