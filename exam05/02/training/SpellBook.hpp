@@ -21,7 +21,7 @@ public:
 
 	void learnSpell(ASpell* spell)
 	{
-		known_spells.insert(pair<string, ASpell*>(spell->getName(), spell));
+		known_spells.insert(pair<string, ASpell*>(spell->getName(), spell->clone()));
 	}
 
 	void forgetSpell(string spell_name)
