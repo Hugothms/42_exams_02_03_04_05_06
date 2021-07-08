@@ -10,7 +10,7 @@ class Polymorph: public ASpell
 private:
 
 public:
-	Polymorph(): ASpell("Polymorph", "turned into critter")
+	Polymorph(): ASpell("Polymorph", "turned into a critter")
 	{}
 
 	~Polymorph();
