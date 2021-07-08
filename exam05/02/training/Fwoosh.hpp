@@ -13,7 +13,8 @@ public:
 	Fwoosh(): ASpell("Fwoosh", "fwooshed")
 	{}
 
-	~Fwoosh();
+	~Fwoosh()
+	{}
 
 	ASpell *clone()
 	{
