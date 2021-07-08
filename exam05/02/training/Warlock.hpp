@@ -13,9 +13,6 @@ private:
 	std::string name;
 	std::string title;
 	SpellBook book;
-	Warlock();
-	Warlock(const Warlock& copy);
-	Warlock& operator=(const Warlock& copy);
 public:
 	Warlock(const std::string name, const std::string title): name(name), title(title)
 	{
@@ -44,7 +41,7 @@ public:
 
 	void introduce() const
 	{
-		std::cout << name << ": I am " << name << ", " << title << " !" << std::endl;
+		std::cout << name << ": I am " << name << ", " << title << "!" << std::endl;
 	}
 
 	void learnSpell(ASpell *spell)

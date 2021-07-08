@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:47:00 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/08 22:20:47 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ class Warlock
 private:
 	string name;
 	string title;
-	Warlock();
-	Warlock(const Warlock& copy);
-	Warlock& operator=(const Warlock& copy);
 public:
-
 	Warlock(string const name, string const title): name(name), title(title)
 	{
 		cout << name << ": This looks like another boring day." << endl;

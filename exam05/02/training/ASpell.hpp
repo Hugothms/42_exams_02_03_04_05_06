@@ -22,12 +22,6 @@ public:
 	~ASpell()
 	{}
 
-	ASpell(const ASpell& copy)
-	{
-		name = copy.getName();
-		effects = copy.getEffects();
-	}
-
 	string getName() const
 	{
 		return name;

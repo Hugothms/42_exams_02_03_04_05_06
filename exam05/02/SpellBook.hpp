@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 17:13:39 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/08 21:55:58 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ class SpellBook
 {
 private:
 	map<string, ASpell*> spells;
-	SpellBook(const SpellBook& copy);
-	SpellBook& operator=(const SpellBook& copy);
 public:
 	SpellBook()
 	{}
@@ -35,7 +33,7 @@ public:
 
 	void learnSpell(ASpell* spell)
 	{
-		spells.insert(pair<string, ASpell*>(spell->getName(), spell));
+		spells.insert(pair<string, ASpell*>(spell->getName(), spell->clone()));
 	}
 
 	void forgetSpell(const string& spell_name)

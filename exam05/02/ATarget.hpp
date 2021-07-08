@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:14:21 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:47:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/08 22:17:08 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class ATarget
 {
 private:
 	string type;
-	ATarget();
-	ATarget& operator=(const ATarget& copy);
 public:
 	ATarget(string type):
 	type(type)
@@ -35,12 +33,7 @@ public:
 	~ATarget()
 	{}
 
-	ATarget(const ATarget& copy)
-	{
-		type = copy.getType();
-	}
-
-	string const &getType() const
+	string getType() const
 	{
 		return type;
 	}

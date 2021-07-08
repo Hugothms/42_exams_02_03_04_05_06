@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/07 15:05:02 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/08 22:20:08 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@ private:
 	string name;
 	string title;
 	map<string, ASpell*> known_spells;
-	Warlock();
-	Warlock(const Warlock& copy);
-	Warlock& operator=(const Warlock& copy);
 public:
-
 	Warlock(string const name, string const title): name(name), title(title)
 	{
 		cout << name << ": This looks like another boring day." << endl;

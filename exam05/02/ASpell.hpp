@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:47:47 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/08 22:16:59 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,13 @@ class ASpell
 private:
 	string name;
 	string effects;
-	ASpell();
-	ASpell& operator=(const ASpell& copy);
 public:
 	ASpell(string name, string effects):
 	name(name), effects(effects)
 	{}
 
-	~ASpell();
-
-	ASpell(const ASpell& copy)
-	{
-		name = copy.getName();
-		effects = copy.getEffects();
-	}
+	~ASpell()
+	{}
 
 	string const &getName() const
 	{
