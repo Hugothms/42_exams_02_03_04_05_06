@@ -13,7 +13,8 @@ public:
 	Polymorph(): ASpell("Polymorph", "turned into a critter")
 	{}
 
-	~Polymorph();
+	~Polymorph()
+	{}
 
 	ASpell *clone()
 	{
