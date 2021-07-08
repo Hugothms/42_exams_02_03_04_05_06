@@ -37,7 +37,7 @@ public:
 		return title;
 	}
 
-	void listTitle(const std::string& title)
+	void setTitle(const std::string& title)
 	{
 		this->title = title;
 	}
