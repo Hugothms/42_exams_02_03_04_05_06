@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:25:19 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/29 15:30:21 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/09 09:08:32 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ public:
 	ATarget("Inconspicuous Red-brick Wall")
 	{}
 
-	~BrickWall()
-	{}
-
 	ATarget *clone() const
 	{
-		return new BrickWall(*this);
+		return new BrickWall();
 	}
 };
 

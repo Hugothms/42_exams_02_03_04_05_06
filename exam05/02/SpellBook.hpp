@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/08 21:55:58 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/09 09:35:34 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ public:
 	{}
 
 	~SpellBook()
-	{}
+	{
+		std::map<string, ASpell*>::iterator it;
+		for (it = spells.begin(); it != spells.end() ; it++)
+			delete(it->second);
+	}
 
 	void learnSpell(ASpell* spell)
 	{

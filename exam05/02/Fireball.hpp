@@ -26,7 +26,7 @@ public:
 
 	Fireball *clone() const
 	{
-		return new Fireball(*this);
+		return new Fireball();
 	}
 };
 

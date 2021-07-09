@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:19:13 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/28 16:35:02 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/09 09:07:26 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 
 	Fwoosh *clone() const
 	{
-		return new Fwoosh(*this);
+		return new Fwoosh();
 	}
 };
 

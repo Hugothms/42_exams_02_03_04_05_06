@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/08 22:16:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/09 09:34:56 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	name(name), effects(effects)
 	{}
 
-	~ASpell()
+	virtual ~ASpell()
 	{}
 
 	string const &getName() const

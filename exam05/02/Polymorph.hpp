@@ -26,7 +26,7 @@ public:
 
 	Polymorph *clone() const
 	{
-		return new Polymorph(*this);
+		return new Polymorph();
 	}
 };
 
