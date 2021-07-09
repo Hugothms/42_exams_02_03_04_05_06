@@ -20,8 +20,7 @@
 class Fireball: public ASpell
 {
 public:
-	Fireball():
-	ASpell("Fireball", "burnt to a crisp")
+	Fireball(): ASpell("Fireball", "burnt to a crisp")
 	{}
 
 	Fireball *clone() const

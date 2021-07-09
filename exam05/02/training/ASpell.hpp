@@ -15,8 +15,7 @@ private:
 	string name;
 	string effects;
 public:
-	ASpell(string name, string effects):
-	name(name), effects(effects)
+	ASpell(string name, string effects): name(name), effects(effects)
 	{}
 
 	~ASpell()

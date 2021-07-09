@@ -20,8 +20,7 @@
 class Polymorph: public ASpell
 {
 public:
-	Polymorph():
-	ASpell("Polymorph", "turned into a critter")
+	Polymorph(): ASpell("Polymorph", "turned into a critter")
 	{}
 
 	Polymorph *clone() const

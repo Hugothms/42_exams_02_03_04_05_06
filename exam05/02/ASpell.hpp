@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/09 09:34:56 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/09 10:22:57 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ private:
 	string name;
 	string effects;
 public:
-	ASpell(string name, string effects):
-	name(name), effects(effects)
+	ASpell(string name, string effects): name(name), effects(effects)
 	{}
 
 	virtual ~ASpell()

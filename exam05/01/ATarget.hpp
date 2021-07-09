@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:14:21 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/08 22:23:35 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/07/09 10:22:57 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ class ATarget
 private:
 	string type;
 public:
-	ATarget(string type):
-	type(type)
+	ATarget(string type): type(type)
 	{}
 
 	~ATarget()
