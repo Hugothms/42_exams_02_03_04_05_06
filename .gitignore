@@ -57,3 +57,5 @@ exam04/microshell
 exam04/out.res
 .vscode/settings.json
 exam04/training
+
+*.DS_Store
