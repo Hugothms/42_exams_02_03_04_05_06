@@ -61,3 +61,4 @@ exam04/training
 *.DS_Store
 *.swp
 training/
+exam05/.vscode/settings.json
