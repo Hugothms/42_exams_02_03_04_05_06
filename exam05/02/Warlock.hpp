@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/08 22:17:47 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/10/04 13:35:02 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <string>
 # include <iostream>
-# include <map>
 
 # include "ASpell.hpp"
 # include "SpellBook.hpp"
