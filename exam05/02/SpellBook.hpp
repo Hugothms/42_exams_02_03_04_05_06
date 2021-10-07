@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/09 09:35:34 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/10/07 15:11:35 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ public:
 
 	ASpell* createSpell(const string& spell_name)
 	{
-		ASpell* spell = spells[spell_name];
-		if (spell)
-			return spell;
-		return NULL;
+		return (spells[spell_name]);
 	}
 };
 
