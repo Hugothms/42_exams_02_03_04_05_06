@@ -6,15 +6,15 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:40:47 by hthomas           #+#    #+#             */
-/*   Updated: 2021/11/04 16:06:56 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:08:23 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Warlock.hpp"
-#include "BrickWall.hpp"
 #include "Polymorph.hpp"
 #include "Fireball.hpp"
 #include "Fwoosh.hpp"
+#include "BrickWall.hpp"
 #include "TargetGenerator.hpp"
 
 int main()
