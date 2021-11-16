@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:14:21 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/09 10:22:57 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/11/16 16:51:01 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,22 @@ class ATarget
 {
 private:
 	string type;
+
 public:
+	ATarget()
+	{}
+
+	ATarget(const ATarget &other)
+	{
+		*this = other;
+	}
+
+	ATarget &operator=(const ATarget &other)
+	{
+		this->type = other.type;
+		return *this;
+	}
+
 	ATarget(string type): type(type)
 	{}
 

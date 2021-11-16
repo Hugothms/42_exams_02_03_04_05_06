@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/10/04 13:35:02 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/11/16 16:52:57 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ private:
 	string name;
 	string title;
 	SpellBook spell_book;
-public:
 
+	Warlock();
+	Warlock(const Warlock &other);
+	Warlock &operator=(const Warlock &other);
+
+public:
 	Warlock(string const name, string const title): name(name), title(title)
 	{
 		cout << name << ": This looks like another boring day." << endl;

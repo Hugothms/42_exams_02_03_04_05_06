@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/09 10:22:57 by hthomas          ###   ########.fr       */
+/*   Updated: 2021/11/16 16:49:23 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,33 @@ class ASpell
 private:
 	string name;
 	string effects;
+
 public:
+	ASpell()
+	{}
+
+	ASpell(const ASpell &other)
+	{
+		*this = other;
+	}
+
+	ASpell &operator=(const ASpell &other)
+	{
+		this->name = other.name;
+		this->effects = other.effects;
+		return *this;
+	}
+
 	ASpell(string name, string effects): name(name), effects(effects)
 	{}
 
 	virtual ~ASpell()
 	{}
+
+	// ASpell &operator=(const ASpell &other)
+	// {
+	// 	this->name = other.name;
+	// }
 
 	string const &getName() const
 	{
