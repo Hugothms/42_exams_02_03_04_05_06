@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:25:19 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/09 10:22:57 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/04 09:34:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 
 class Dummy: public ATarget
 {
-public:
-	Dummy(): ATarget("Target Practice Dummy")
-	{}
+	public:
+		Dummy(): ATarget("Target Practice Dummy")
+		{}
 
-	ATarget *clone() const
-	{
-		return new Dummy();
-	}
+		ATarget *clone() const
+		{
+			return new Dummy();
+		}
 };
 
 #endif

@@ -19,14 +19,14 @@
 
 class Polymorph: public ASpell
 {
-public:
-	Polymorph(): ASpell("Polymorph", "turned into a critter")
-	{}
+	public:
+		Polymorph(): ASpell("Polymorph", "turned into a critter")
+		{}
 
-	Polymorph *clone() const
-	{
-		return new Polymorph();
-	}
+		Polymorph *clone() const
+		{
+			return new Polymorph();
+		}
 };
 
 #endif

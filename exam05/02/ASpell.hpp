@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:58:48 by hthomas           #+#    #+#             */
-/*   Updated: 2021/11/16 16:49:23 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/04 09:33:34 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,50 +23,50 @@ using namespace std;
 
 class ASpell
 {
-private:
-	string name;
-	string effects;
+	private:
+		string name;
+		string effects;
 
-public:
-	ASpell()
-	{}
+	public:
+		ASpell()
+		{}
 
-	ASpell(const ASpell &other)
-	{
-		*this = other;
-	}
+		ASpell(const ASpell &other)
+		{
+			*this = other;
+		}
 
-	ASpell &operator=(const ASpell &other)
-	{
-		this->name = other.name;
-		this->effects = other.effects;
-		return *this;
-	}
+		ASpell &operator=(const ASpell &other)
+		{
+			this->name = other.name;
+			this->effects = other.effects;
+			return *this;
+		}
 
-	ASpell(string name, string effects): name(name), effects(effects)
-	{}
+		ASpell(string name, string effects): name(name), effects(effects)
+		{}
 
-	virtual ~ASpell()
-	{}
+		virtual ~ASpell()
+		{}
 
-	// ASpell &operator=(const ASpell &other)
-	// {
-	// 	this->name = other.name;
-	// }
+		// ASpell &operator=(const ASpell &other)
+		// {
+		// 	this->name = other.name;
+		// }
 
-	string const &getName() const
-	{
-		return name;
-	}
+		string const &getName() const
+		{
+			return name;
+		}
 
-	string const &getEffects() const
-	{
-		return effects;
-	}
+		string const &getEffects() const
+		{
+			return effects;
+		}
 
-	virtual ASpell *clone() const = 0;
+		virtual ASpell *clone() const = 0;
 
-	void launch(ATarget const& target);
+		void launch(ATarget const& target);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/04 09:32:04 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/04 09:33:48 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,33 @@ using namespace std;
 
 class TargetGenerator
 {
-private:
-	map<string, ATarget*> targets;
+	private:
+		map<string, ATarget*> targets;
 
-	TargetGenerator(TargetGenerator const &other);
-	TargetGenerator &operator=(TargetGenerator const &other);
+		TargetGenerator(TargetGenerator const &other);
+		TargetGenerator &operator=(TargetGenerator const &other);
 
-public:
-	TargetGenerator()
-	{}
+	public:
+		TargetGenerator()
+		{}
 
-	~TargetGenerator()
-	{}
+		~TargetGenerator()
+		{}
 
-	void learnTargetType(ATarget* target)
-	{
-		targets.insert(pair<string, ATarget*>(target->getType(), target));
-	}
+		void learnTargetType(ATarget* target)
+		{
+			targets.insert(pair<string, ATarget*>(target->getType(), target));
+		}
 
-	void forgetTargetType(const string &target_type)
-	{
-		targets.erase(target_type);
-	}
+		void forgetTargetType(const string &target_type)
+		{
+			targets.erase(target_type);
+		}
 
-	ATarget* createTarget(const string &target_type)
-	{
-		return targets[target_type];
-	}
+		ATarget* createTarget(const string &target_type)
+		{
+			return targets[target_type];
+		}
 };
 
 #endif
