@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/08 21:55:58 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/04 09:32:04 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ class TargetGenerator
 {
 private:
 	map<string, ATarget*> targets;
+
+	TargetGenerator(TargetGenerator const &other);
+	TargetGenerator &operator=(TargetGenerator const &other);
+
 public:
 	TargetGenerator()
 	{}

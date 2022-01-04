@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2021/10/07 15:11:35 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/04 09:31:46 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ class SpellBook
 {
 private:
 	map<string, ASpell*> spells;
+
+	SpellBook(SpellBook const &other);
+	SpellBook &operator=(SpellBook const &other);
+
 public:
 	SpellBook()
 	{}
