@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/04 09:33:39 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/06 18:44:27 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ class SpellBook
 
 		void learnSpell(ASpell* spell)
 		{
-			spells.insert(pair<string, ASpell*>(spell->getName(), spell->clone()));
+			if (spell)
+				spells.insert(pair<string, ASpell*>(spell->getName(), spell->clone()));
 		}
 
 		void forgetSpell(const string& spell_name)
@@ -51,7 +52,10 @@ class SpellBook
 
 		ASpell* createSpell(const string& spell_name)
 		{
-			return (spells[spell_name]);
+			map<string, ASpell*>::iterator it = spells.find(spell_name);
+			if (it != spells.end())
+				return spells[spell_name];
+			return NULL;
 		}
 };
 

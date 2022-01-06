@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:25:19 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/04 09:34:06 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/06 18:49:00 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ class BrickWall: public ATarget
 {
 	public:
 		BrickWall(): ATarget("Inconspicuous Red-brick Wall")
+		{}
+
+		~BrickWall()
 		{}
 
 		ATarget *clone() const

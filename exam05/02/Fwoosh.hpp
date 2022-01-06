@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:19:13 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/04 09:34:17 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/06 18:47:43 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ class Fwoosh: public ASpell
 {
 	public:
 		Fwoosh(): ASpell("Fwoosh", "fwooshed")
+		{}
+
+		~Fwoosh()
 		{}
 
 		Fwoosh *clone() const

@@ -23,6 +23,9 @@ class Fireball: public ASpell
 		Fireball(): ASpell("Fireball", "burnt to a crisp")
 		{}
 
+		~Fireball()
+		{}
+
 		Fireball *clone() const
 		{
 			return new Fireball();

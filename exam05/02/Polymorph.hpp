@@ -23,6 +23,9 @@ class Polymorph: public ASpell
 		Polymorph(): ASpell("Polymorph", "turned into a critter")
 		{}
 
+		~Polymorph()
+		{}
+
 		Polymorph *clone() const
 		{
 			return new Polymorph();

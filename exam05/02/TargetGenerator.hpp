@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/04 09:33:48 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/06 18:41:21 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ class TargetGenerator
 
 		ATarget* createTarget(const string &target_type)
 		{
-			return targets[target_type];
+			map<string, ATarget*>::iterator it = targets.find(target_type);
+			if (it != targets.end())
+				return targets[target_type];
+			return NULL;
 		}
 };
 
