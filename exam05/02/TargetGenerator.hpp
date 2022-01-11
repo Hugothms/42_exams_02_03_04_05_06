@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/06 18:41:21 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/11 11:17:20 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,15 @@ class TargetGenerator
 		{}
 
 		~TargetGenerator()
-		{}
+		{
+		std::map<string, ATarget*>::iterator it;
+		for (it = targets.begin(); it != targets.end(); it++)
+			delete it->second;
+		}
 
 		void learnTargetType(ATarget* target)
 		{
-			targets.insert(pair<string, ATarget*>(target->getType(), target));
+			targets.insert(pair<string, ATarget*>(target->getType(), target->clone()));
 		}
 
 		void forgetTargetType(const string &target_type)

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/06 18:44:27 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/11 11:16:35 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class SpellBook
 		~SpellBook()
 		{
 			std::map<string, ASpell*>::iterator it;
-			for (it = spells.begin(); it != spells.end() ; it++)
-				delete(it->second);
+			for (it = spells.begin(); it != spells.end(); it++)
+				delete it->second;
 		}
 
 		void learnSpell(ASpell* spell)

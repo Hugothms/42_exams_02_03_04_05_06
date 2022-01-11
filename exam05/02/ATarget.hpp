@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:14:21 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/04 09:33:36 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/11 11:16:57 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class ATarget
 		ATarget(string type): type(type)
 		{}
 
-		~ATarget()
+		virtual ~ATarget()
 		{}
 
 		string getType() const

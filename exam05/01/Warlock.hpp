@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2021/07/08 22:20:08 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/11 11:15:15 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ public:
 	~Warlock()
 	{
 		cout << name << ": My job here is done!" << endl;
+		std::map<string, ASpell*>::iterator it;
+		for (it = known_spells.begin(); it != known_spells.end(); it++)
+			delete it->second;
 	}
 
 	string const &getName() const
@@ -60,7 +63,7 @@ public:
 
 	void learnSpell(ASpell* spell)
 	{
-		known_spells.insert(pair<string, ASpell*>(spell->getName(), spell));
+		known_spells.insert(pair<string, ASpell*>(spell->getName(), spell->clone()));
 	}
 
 	void forgetSpell(string spell_name)
