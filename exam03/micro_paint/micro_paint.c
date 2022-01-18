@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:29 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/18 17:40:52 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:45:59 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void execute_one(rectangle *rect, drawing *drawing, int x, int y)
 	is_in = is_in_rectangle((float)x, (float)y, rect);
 	if (is_in == 2 || (is_in == 1 && rect->type == 'R'))
 		drawing->buff[x + y * drawing->width] = rect->color;
-	return;
 }
 
 int apply_op(rectangle *rect, drawing *drawing)

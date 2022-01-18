@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:27 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/25 16:13:28 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:45:33 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct drawing {
 	int		width;
 	int		height;
-	char	*matrice;
+	char	*buff;
 } drawing;
 
 typedef struct circle {
@@ -51,12 +51,12 @@ int parse(FILE *file, drawing *drawing)
 	{
 		if (drawing->width < 1 || drawing->width > 300 || drawing->height < 1 || drawing->height > 300)
 			return (1);
-		drawing->matrice = (char *)malloc(drawing->width * drawing->height);
-		if (!drawing->matrice)
+		drawing->buff = (char *)malloc(drawing->width * drawing->height);
+		if (!drawing->buff)
 			return (1);
 		int i = 0;
 		while (i < drawing->width * drawing->height)
-			drawing->matrice[i++] = background;
+			drawing->buff[i++] = background;
 		return (0);
 	}
 	return (1);
@@ -91,7 +91,7 @@ void execute_one(circle *circle, drawing *drawing, int x, int y)
 
 	is_in = is_in_circle((float)x, (float)y, circle);
 	if (is_in == 2 || (is_in == 1 && circle->type == 'C'))
-		drawing->matrice[x + y * drawing->width] = circle->color;
+		drawing->buff[x + y * drawing->width] = circle->color;
 }
 
 int apply_op(circle *circle, drawing *drawing)
@@ -108,7 +108,7 @@ void print_drawing(drawing *drawing)
 {
 	for (size_t i = 0; i < drawing->height; i++)
 	{
-		write(1, drawing->matrice + i * drawing->width, drawing->width);
+		write(1, drawing->buff + i * drawing->width, drawing->width);
 		write(1, "\n", 1);
 	}
 }
@@ -137,7 +137,7 @@ int execute(FILE *file)
 
 int main(int argc, char **argv)
 {
-	FILE *file;
+	FILE	*file;
 
 	if (argc == 2)
 	{
