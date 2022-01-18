@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:27 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/18 17:45:33 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:46:39 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ void print_drawing(drawing *drawing)
 
 int execute(FILE *file)
 {
-	int 	scan_ret;
-	circle 	circle;
+	int		scan_ret;
+	circle	circle;
 	drawing	drawing;
 
 	if (!parse(file, &drawing))
