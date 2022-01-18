@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:29 by hthomas           #+#    #+#             */
-/*   Updated: 2021/06/25 16:12:19 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:40:52 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 #include <unistd.h>
 
 typedef struct drawing {
-    int		width;
-    int		height;
-    char	*buff;
+	int		width;
+	int		height;
+	char	*buff;
 } drawing;
 
 typedef struct rectangle {
-    char	type;
-    float	x;
-    float	y;
-    float	width;
-    float	height;
-    char	color;
+	char	type;
+	float	x;
+	float	y;
+	float	width;
+	float	height;
+	char	color;
 } rectangle;
 
 int ft_strlen(char *str)
