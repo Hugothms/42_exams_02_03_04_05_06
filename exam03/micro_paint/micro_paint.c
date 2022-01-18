@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:29 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/18 17:45:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:48:16 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ typedef struct rectangle {
 
 int ft_strlen(char *str)
 {
-	int i;
-
-	i = 0;
+	int i = 0;
 	while (str[i])
 		i++;
 	return (i);
