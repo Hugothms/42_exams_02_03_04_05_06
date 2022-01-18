@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:27 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/18 17:46:39 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:50:32 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,8 @@ int parse(FILE *file, drawing *drawing)
 		drawing->buff = (char *)malloc(drawing->width * drawing->height);
 		if (!drawing->buff)
 			return (1);
-		int i = 0;
-		while (i < drawing->width * drawing->height)
-			drawing->buff[i++] = background;
+		for (int i = 0; i < drawing->width * drawing->height; i++)
+			drawing->buff[i] = background;
 		return (0);
 	}
 	return (1);

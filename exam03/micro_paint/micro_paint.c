@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 17:08:29 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/18 17:48:16 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:51:00 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void print_drawing(drawing *drawing)
 
 int execute(FILE *file)
 {
-	int 		scan_ret;
+	int			scan_ret;
 	rectangle	rect;
 	drawing		drawing;
 
