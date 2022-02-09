@@ -18,7 +18,7 @@ t_client *g_clients = NULL;
 
 int sock_fd, g_id = 0;
 fd_set curr_sock, cpy_read, cpy_write;
-char str[42*4096], tmp[42*4096], buf[42*4096 + 42];
+char msg[42*4096], buf[42*4096 + 42];
 
 void fatal()
 {
@@ -131,12 +131,14 @@ void ex_msg(int fd)
 {
 	int i = 0;
 	int j = 0;
+	char tmp[42*4096];
 
-	while (str[i])
+	bzero(&tmp, sizeof(tmp));
+	while (msg[i])
 	{
-		tmp[j] = str[i];
+		tmp[j] = msg[i];
 		j++;
-		if (str[i] == '\n')
+		if (msg[i] == '\n')
 		{
 			sprintf(buf, "client %d: %s", get_id(fd), tmp);
 			send_all(fd, buf);
@@ -146,7 +148,7 @@ void ex_msg(int fd)
 		}
 		i++;
 	}
-	bzero(&str, strlen(str));
+	bzero(&msg, strlen(msg));
 }
 
 int main(int ac, char **av)
@@ -158,11 +160,10 @@ int main(int ac, char **av)
 	}
 
 	struct sockaddr_in servaddr;
-	uint16_t port = atoi(av[1]);
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
-	servaddr.sin_port = htons(port);
+	servaddr.sin_port = htons(atoi(av[1]));
 
 	if ((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
 		fatal();
@@ -173,9 +174,8 @@ int main(int ac, char **av)
 
 	FD_ZERO(&curr_sock);
 	FD_SET(sock_fd, &curr_sock);
-	bzero(&tmp, sizeof(tmp));
 	bzero(&buf, sizeof(buf));
-	bzero(&str, sizeof(str));
+	bzero(&msg, sizeof(msg));
 	while (1)
 	{
 		cpy_write = cpy_read = curr_sock;
@@ -194,9 +194,9 @@ int main(int ac, char **av)
 				else
 				{
 					int ret_recv = 1000;
-					while (ret_recv == 1000 || str[strlen(str) - 1] != '\n')
+					while (ret_recv == 1000 || msg[strlen(msg) - 1] != '\n')
 					{
-						ret_recv = recv(fd, str + strlen(str), 1000, 0);
+						ret_recv = recv(fd, msg + strlen(msg), 1000, 0);
 						if (ret_recv <= 0)
 							break ;
 					}
@@ -210,7 +210,7 @@ int main(int ac, char **av)
 						break;
 					}
 					else
-						ex_buf(fd);
+						ex_msg(fd);
 				}
 			}
 
