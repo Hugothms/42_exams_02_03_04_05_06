@@ -16,7 +16,7 @@ typedef struct		s_client
 
 t_client	*g_clients = NULL;
 int			sock_fd, g_nb_clients = 0;
-fd_set		sockets, cpy_read, cpy_write;
+fd_set		sockets;
 char		msg[42*4096], buf[42*4096 + 42];
 
 void fatal()
@@ -150,13 +150,15 @@ void ex_msg(int fd)
 
 int main(int ac, char **av)
 {
+	struct sockaddr_in	servaddr;
+	fd_set				cpy_read, cpy_write;
+
 	if (ac != 2)
 	{
 		write(2, "Wrong number of arguments\n", strlen("Wrong number of arguments\n"));
 		exit(1);
 	}
 
-	struct sockaddr_in	servaddr;
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
