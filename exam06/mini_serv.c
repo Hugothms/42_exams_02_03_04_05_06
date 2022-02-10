@@ -14,8 +14,8 @@ typedef struct		s_client
 	struct s_client	*next;
 }					t_client;
 
-t_client	*g_clients = NULL;
-int			sock_fd, g_nb_clients = 0;
+t_client	*clients = NULL;
+int			sock_fd, nb_clients = 0;
 fd_set		sockets;
 char		msg[42*4096], buf[42*4096 + 42];
 
@@ -28,7 +28,7 @@ void fatal()
 
 int get_id(int fd)
 {
-	t_client	*tmp = g_clients;
+	t_client	*tmp = clients;
 
 	while (tmp)
 	{
@@ -41,7 +41,7 @@ int get_id(int fd)
 
 int get_max_fd()
 {
-	t_client	*tmp = g_clients;
+	t_client	*tmp = clients;
 	int			max_fd = sock_fd;
 
 	while (tmp)
@@ -55,7 +55,7 @@ int get_max_fd()
 
 void send_all(int fd, char *buf)
 {
-	t_client	*tmp = g_clients;
+	t_client	*tmp = clients;
 
 	while (tmp)
 	{
@@ -75,13 +75,13 @@ int add_client_to_list(int fd)
 	if (!(new = calloc(1, sizeof(*new))))
 		fatal();
 	new->fd = fd;
-	new->id = g_nb_clients++;
+	new->id = nb_clients++;
 	new->next = NULL;
-	if (!g_clients)
-		g_clients = new;
+	if (!clients)
+		clients = new;
 	else
 	{
-		t_client	*tmp = g_clients;
+		t_client	*tmp = clients;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
@@ -104,13 +104,13 @@ void add_client()
 
 int rm_client(int fd)
 {
-	t_client	*tmp = g_clients;
+	t_client	*tmp = clients;
 	t_client	*to_del;
 	int			id = get_id(fd);
 
 	if (tmp && tmp->fd == fd)
 	{
-		g_clients = g_clients->next;
+		clients = clients->next;
 		free(tmp);
 	}
 	else
