@@ -124,7 +124,7 @@ int rm_client(int fd)
 	return id;
 }
 
-void ex_msg(int fd)
+void extract_msg(int fd)
 {
 	char	tmp[42*4096];
 	int		i = 0;
@@ -204,7 +204,7 @@ int main(int ac, char **av)
 					close(fd);
 					break;
 				}
-				ex_msg(fd);
+				extract_msg(fd);
 			}
 		}
 	}
