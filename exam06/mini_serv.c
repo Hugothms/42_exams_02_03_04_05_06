@@ -15,7 +15,7 @@ typedef struct		s_client
 }					t_client;
 
 t_client	*clients = NULL;
-int			sock_fd, nb_clients = 0;
+int			sock_fd, g_id = 0;
 fd_set		sockets, cpy_read, cpy_write;
 char		msg[42*4096], buf[42*4096 + 42];
 
@@ -75,7 +75,7 @@ int add_client_to_list(int fd)
 	if (!(new = calloc(1, sizeof(*new))))
 		fatal();
 	new->fd = fd;
-	new->id = nb_clients++;
+	new->id = g_id++;
 	new->next = NULL;
 	if (!clients)
 		clients = new;
