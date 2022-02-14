@@ -53,7 +53,7 @@ int get_max_fd()
 	return max_fd;
 }
 
-void send_all(int fd, char *buf)
+void send_all(int fd)
 {
 	t_client	*tmp = clients;
 
@@ -98,7 +98,7 @@ void add_client()
 	if ((client_fd = accept(sock_fd, (struct sockaddr *)&cli_addr, &len)) < 0)
 		fatal();
 	sprintf(buf, "server: client %d just arrived\n", add_client_to_list(client_fd));
-	send_all(client_fd, buf);
+	send_all(client_fd);
 	FD_SET(client_fd, &sockets);
 }
 
@@ -137,7 +137,7 @@ void extract_msg(int fd)
 		if (msg[i] == '\n')
 		{
 			sprintf(buf, "client %d: %s", get_id(fd), tmp);
-			send_all(fd, buf);
+			send_all(fd);
 			j = 0;
 			bzero(&tmp, sizeof(tmp));
 			bzero(&buf, sizeof(buf));
@@ -199,7 +199,7 @@ int main(int ac, char **av)
 				{
 					bzero(&buf, sizeof(buf));
 					sprintf(buf, "server: client %d just left\n", rm_client(fd));
-					send_all(fd, buf);
+					send_all(fd);
 					FD_CLR(fd, &sockets);
 					close(fd);
 					break;
