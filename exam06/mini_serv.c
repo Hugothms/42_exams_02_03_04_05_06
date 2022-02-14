@@ -134,7 +134,7 @@ void extract_msg(int fd)
 	while (msg[i])
 	{
 		tmp[i] = msg[j];
-		if (msg[i] == '\n')
+		if (tmp[i] == '\n')
 		{
 			sprintf(buf, "client %d: %s", get_id(fd), tmp);
 			send_all(fd);
