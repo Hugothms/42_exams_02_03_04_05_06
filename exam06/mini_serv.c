@@ -133,12 +133,12 @@ void extract_msg(int fd)
 	bzero(&tmp, sizeof(tmp));
 	while (msg[i])
 	{
-		tmp[i] = msg[j];
-		if (tmp[i] == '\n')
+		tmp[j] = msg[i];
+		if (msg[i] == '\n')
 		{
 			sprintf(buf, "client %d: %s", get_id(fd), tmp);
 			send_all(fd);
-			i = 0;
+			j = 0;
 			bzero(&tmp, sizeof(tmp));
 			bzero(&buf, sizeof(buf));
 		}
