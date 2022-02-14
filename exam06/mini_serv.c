@@ -138,7 +138,7 @@ void extract_msg(int fd)
 		{
 			sprintf(buf, "client %d: %s", get_id(fd), tmp);
 			send_all(fd);
-			j = 0;
+			i = 0;
 			bzero(&tmp, sizeof(tmp));
 			bzero(&buf, sizeof(buf));
 		}
