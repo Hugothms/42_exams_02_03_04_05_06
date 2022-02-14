@@ -134,7 +134,6 @@ void extract_msg(int fd)
 	while (msg[i])
 	{
 		tmp[i] = msg[j];
-		j++;
 		if (msg[i] == '\n')
 		{
 			sprintf(buf, "client %d: %s", get_id(fd), tmp);
@@ -144,6 +143,7 @@ void extract_msg(int fd)
 			bzero(&buf, sizeof(buf));
 		}
 		i++;
+		j++;
 	}
 	bzero(&msg, sizeof(msg));
 }
