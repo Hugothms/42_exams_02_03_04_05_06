@@ -15,14 +15,14 @@ typedef struct		s_client
 }					t_client;
 
 t_client	*clients = NULL;
-int			sock_fd, g_id = 0;
+int			sockfd, g_id = 0;
 fd_set		sockets, cpy_read, cpy_write;
 char		msg[42*4096], buf[42*4096 + 42];
 
 void fatal()
 {
 	write(2, "Fatal error\n", strlen("Fatal error\n"));
-	close(sock_fd);
+	close(sockfd);
 	exit(1);
 }
 
@@ -42,7 +42,7 @@ int get_id(int fd)
 int get_max_fd()
 {
 	t_client	*tmp = clients;
-	int			max_fd = sock_fd;
+	int			max_fd = sockfd;
 
 	while (tmp)
 	{
@@ -91,16 +91,16 @@ int add_client_to_list(int fd)
 
 void add_client()
 {
-	struct sockaddr_in	cli_addr;
-	int					client_fd;
-	socklen_t			len = sizeof(cli_addr);
+	struct sockaddr_in	cli;
+	int					connfd;
+	socklen_t			len = sizeof(cli);
 
-	if ((client_fd = accept(sock_fd, (struct sockaddr *)&cli_addr, &len)) < 0)
+	if ((connfd = accept(sockfd, (struct sockaddr *)&cli, &len)) < 0)
 		fatal();
 	bzero(&buf, sizeof(buf));
-	sprintf(buf, "server: client %d just arrived\n", add_client_to_list(client_fd));
-	send_all(client_fd);
-	FD_SET(client_fd, &sockets);
+	sprintf(buf, "server: client %d just arrived\n", add_client_to_list(connfd));
+	send_all(connfd);
+	FD_SET(connfd, &sockets);
 }
 
 void rm_client(int fd)
@@ -166,15 +166,15 @@ int main(int ac, char **av)
 	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
 	servaddr.sin_port = htons(atoi(av[1]));
 
-	if ((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 		fatal();
-	if ((bind(sock_fd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
+	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
 		fatal();
-	if (listen(sock_fd, 10) != 0)
+	if (listen(sockfd, 10) != 0)
 		fatal();
 
 	FD_ZERO(&sockets);
-	FD_SET(sock_fd, &sockets);
+	FD_SET(sockfd, &sockets);
 	bzero(&buf, sizeof(buf));
 	bzero(&msg, sizeof(msg));
 	while (1)
@@ -182,11 +182,11 @@ int main(int ac, char **av)
 		cpy_write = cpy_read = sockets;
 		if (select(get_max_fd() + 1, &cpy_read, &cpy_write, NULL, NULL) < 0)
 			continue;
-		for (int fd = sock_fd; fd <= get_max_fd(); fd++)
+		for (int fd = sockfd; fd <= get_max_fd(); fd++)
 		{
 			if (FD_ISSET(fd, &cpy_read))
 			{
-				if (fd == sock_fd)
+				if (fd == sockfd)
 				{
 					add_client();
 					break;
