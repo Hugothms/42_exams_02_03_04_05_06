@@ -97,16 +97,16 @@ void add_client()
 
 	if ((client_fd = accept(sock_fd, (struct sockaddr *)&cli_addr, &len)) < 0)
 		fatal();
+	bzero(&buf, sizeof(buf));
 	sprintf(buf, "server: client %d just arrived\n", add_client_to_list(client_fd));
 	send_all(client_fd);
 	FD_SET(client_fd, &sockets);
 }
 
-int rm_client(int fd)
+void rm_client(int fd)
 {
 	t_client	*tmp = clients;
 	t_client	*to_del;
-	int			id = get_id(fd);
 
 	if (tmp && tmp->fd == fd)
 	{
@@ -121,7 +121,11 @@ int rm_client(int fd)
 		tmp->next = tmp->next->next;
 		free(to_del);
 	}
-	return id;
+	bzero(&buf, sizeof(buf));
+	sprintf(buf, "server: client %d just left\n", get_id(fd));
+	send_all(fd);
+	FD_CLR(fd, &sockets);
+	close(fd);
 }
 
 void extract_msg(int fd)
@@ -184,7 +188,6 @@ int main(int ac, char **av)
 			{
 				if (fd == sock_fd)
 				{
-					bzero(&buf, sizeof(buf));
 					add_client();
 					break;
 				}
@@ -197,11 +200,7 @@ int main(int ac, char **av)
 				}
 				if (ret_recv <= 0)
 				{
-					bzero(&buf, sizeof(buf));
-					sprintf(buf, "server: client %d just left\n", rm_client(fd));
-					send_all(fd);
-					FD_CLR(fd, &sockets);
-					close(fd);
+					rm_client(fd);
 					break;
 				}
 				extract_msg(fd);
