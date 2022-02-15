@@ -107,6 +107,7 @@ void rm_client(int fd)
 {
 	t_client	*tmp = clients;
 	t_client	*to_del;
+	int			id = get_id(fd);
 
 	if (tmp && tmp->fd == fd)
 	{
@@ -122,7 +123,7 @@ void rm_client(int fd)
 		free(to_del);
 	}
 	bzero(&buff, sizeof(buff));
-	sprintf(buff, "server: client %d just left\n", get_id(fd));
+	sprintf(buff, "server: client %d just left\n", id);
 	send_all(fd);
 	FD_CLR(fd, &sockets);
 	close(fd);
