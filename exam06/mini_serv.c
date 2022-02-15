@@ -17,7 +17,7 @@ typedef struct		s_client
 t_client	*clients = NULL;
 int			sockfd, g_id = 0;
 fd_set		sockets, cpy_read, cpy_write;
-char		msg[42*4096], buf[42*4096 + 42];
+char		msg[42*4096], buff[42*4096 + 42];
 
 void fatal()
 {
@@ -61,7 +61,7 @@ void send_all(int fd)
 	{
 		if (tmp->fd != fd && FD_ISSET(tmp->fd, &cpy_write))
 		{
-			if (send(tmp->fd, buf, strlen(buf), 0) < 0)
+			if (send(tmp->fd, buff, strlen(buff), 0) < 0)
 				fatal();
 		}
 		tmp = tmp->next;
@@ -97,8 +97,8 @@ void add_client()
 
 	if ((connfd = accept(sockfd, (struct sockaddr *)&cli, &len)) < 0)
 		fatal();
-	bzero(&buf, sizeof(buf));
-	sprintf(buf, "server: client %d just arrived\n", add_client_to_list(connfd));
+	bzero(&buff, sizeof(buff));
+	sprintf(buff, "server: client %d just arrived\n", add_client_to_list(connfd));
 	send_all(connfd);
 	FD_SET(connfd, &sockets);
 }
@@ -121,8 +121,8 @@ void rm_client(int fd)
 		tmp->next = tmp->next->next;
 		free(to_del);
 	}
-	bzero(&buf, sizeof(buf));
-	sprintf(buf, "server: client %d just left\n", get_id(fd));
+	bzero(&buff, sizeof(buff));
+	sprintf(buff, "server: client %d just left\n", get_id(fd));
 	send_all(fd);
 	FD_CLR(fd, &sockets);
 	close(fd);
@@ -140,11 +140,11 @@ void extract_msg(int fd)
 		tmp[j] = msg[i];
 		if (msg[i] == '\n')
 		{
-			sprintf(buf, "client %d: %s", get_id(fd), tmp);
+			sprintf(buff, "client %d: %s", get_id(fd), tmp);
 			send_all(fd);
 			j = 0;
 			bzero(&tmp, sizeof(tmp));
-			bzero(&buf, sizeof(buf));
+			bzero(&buff, sizeof(buff));
 		}
 		i++;
 		j++;
@@ -175,7 +175,7 @@ int main(int ac, char **av)
 
 	FD_ZERO(&sockets);
 	FD_SET(sockfd, &sockets);
-	bzero(&buf, sizeof(buf));
+	bzero(&buff, sizeof(buff));
 	bzero(&msg, sizeof(msg));
 	while (1)
 	{
