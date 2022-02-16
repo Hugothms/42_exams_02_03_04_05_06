@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:10:33 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/04 09:33:56 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/02/16 16:12:35 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ class Warlock
 
 		void launchSpell(string spell_name, ATarget& target)
 		{
+			ATarget const *test = NULL;
+			if (test == &target)
+				return;
 			ASpell* spell = spell_book.createSpell(spell_name);
 			if (spell)
 				spell->launch(target);

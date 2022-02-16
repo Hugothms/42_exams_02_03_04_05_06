@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:59:18 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/11 11:17:20 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/02/16 16:12:56 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ class TargetGenerator
 
 		void forgetTargetType(const string &target_type)
 		{
+			std::map<std::string, ATarget *>::iterator it = targets.find(target_type);
+			if (it != targets.end())
+				delete it->second;
 			targets.erase(target_type);
 		}
 

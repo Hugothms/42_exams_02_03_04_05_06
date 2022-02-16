@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:31:55 by hthomas           #+#    #+#             */
-/*   Updated: 2022/01/11 11:16:35 by hthomas          ###   ########.fr       */
+/*   Updated: 2022/02/16 16:12:04 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ class SpellBook
 
 		void forgetSpell(const string& spell_name)
 		{
+			std::map<std::string, ASpell *>::iterator it = spells.find(spell_name);
+			if (it != spells.end())
+				delete it->second;
 			spells.erase(spell_name);
 		}
 
