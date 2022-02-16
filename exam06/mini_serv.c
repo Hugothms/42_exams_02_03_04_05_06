@@ -105,26 +105,26 @@ void add_client()
 
 void rm_client(int fd)
 {
-	t_client	*tmp = clients;
 	t_client	*to_del;
-	int			id = get_id(fd);
 
-	if (tmp && tmp->fd == fd)
+	bzero(&buff, sizeof(buff));
+	sprintf(buff, "server: client %d just left\n", get_id(fd));
+	send_all(fd);
+	if (clients && clients->fd == fd)
 	{
+		to_del = clients;
 		clients = clients->next;
-		free(tmp);
+		free(to_del);
 	}
 	else
 	{
+		t_client	*tmp = clients;
 		while (tmp && tmp->next && tmp->next->fd != fd)
 			tmp = tmp->next;
 		to_del = tmp->next;
 		tmp->next = tmp->next->next;
 		free(to_del);
 	}
-	bzero(&buff, sizeof(buff));
-	sprintf(buff, "server: client %d just left\n", id);
-	send_all(fd);
 	FD_CLR(fd, &sockets);
 	close(fd);
 }
