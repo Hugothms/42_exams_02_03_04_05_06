@@ -70,11 +70,25 @@ void send_all(int fd)
 
 int add_client_to_list(int fd)
 {
+
+}
+
+void add_client()
+{
+	struct sockaddr_in	cli;
+	int					connfd;
+	socklen_t			len = sizeof(cli);
 	t_client	*new;
 
+	if ((connfd = accept(sockfd, (struct sockaddr *)&cli, &len)) < 0)
+		fatal();
+	bzero(&buff, sizeof(buff));
+	sprintf(buff, "server: client %d just arrived\n", g_id);
+	send_all(connfd);
+	FD_SET(connfd, &sockets);
 	if (!(new = calloc(1, sizeof(*new))))
 		fatal();
-	new->fd = fd;
+	new->fd = connfd;
 	new->id = g_id++;
 	new->next = NULL;
 	if (!clients)
@@ -86,21 +100,6 @@ int add_client_to_list(int fd)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
-	return new->id;
-}
-
-void add_client()
-{
-	struct sockaddr_in	cli;
-	int					connfd;
-	socklen_t			len = sizeof(cli);
-
-	if ((connfd = accept(sockfd, (struct sockaddr *)&cli, &len)) < 0)
-		fatal();
-	bzero(&buff, sizeof(buff));
-	sprintf(buff, "server: client %d just arrived\n", add_client_to_list(connfd));
-	send_all(connfd);
-	FD_SET(connfd, &sockets);
 }
 
 void rm_client(int fd)
