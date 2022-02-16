@@ -73,7 +73,7 @@ void add_client()
 	struct sockaddr_in	cli;
 	int					connfd;
 	socklen_t			len = sizeof(cli);
-	t_client	*new;
+	t_client			*new;
 
 	if ((connfd = accept(sockfd, (struct sockaddr *)&cli, &len)) < 0)
 		fatal();
