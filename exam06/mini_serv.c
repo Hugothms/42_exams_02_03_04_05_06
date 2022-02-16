@@ -177,7 +177,7 @@ int main(int ac, char **av)
 		cpy_write = cpy_read = sockets;
 		if (select(get_max_fd() + 1, &cpy_read, &cpy_write, NULL, NULL) < 0)
 			continue;
-		for (int fd = sockfd; fd <= get_max_fd(); fd++)
+		for (int fd = sockfd; fd < get_max_fd() + 1; fd++)
 		{
 			if (FD_ISSET(fd, &cpy_read))
 			{
