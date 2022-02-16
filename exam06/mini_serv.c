@@ -68,11 +68,6 @@ void send_all(int fd)
 	}
 }
 
-int add_client_to_list(int fd)
-{
-
-}
-
 void add_client()
 {
 	struct sockaddr_in	cli;
