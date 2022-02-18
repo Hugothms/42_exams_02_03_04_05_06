@@ -108,7 +108,6 @@ void rm_client(int fd)
 	{
 		to_del = clients;
 		clients = clients->next;
-		free(to_del);
 	}
 	else
 	{
@@ -117,8 +116,8 @@ void rm_client(int fd)
 			tmp = tmp->next;
 		to_del = tmp->next;
 		tmp->next = tmp->next->next;
-		free(to_del);
 	}
+	free(to_del);
 	FD_CLR(fd, &sockets);
 	close(fd);
 }
