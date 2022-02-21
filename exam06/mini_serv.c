@@ -164,7 +164,7 @@ int main(int ac, char **av)
 		fatal();
 	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
 		fatal();
-	if (listen(sockfd, 10) != 0)
+	if (listen(sockfd, 128) != 0)
 		fatal();
 
 	FD_ZERO(&sockets);
