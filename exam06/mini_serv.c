@@ -17,7 +17,7 @@ typedef struct		s_client
 t_client	*clients = NULL;
 int			sockfd, g_id = 0;
 fd_set		sockets, cpy_read, cpy_write;
-char		msg[42*4096], buff[42*4096 + 42];
+char		msg[42 * 4096], buff[42 * 4096 + 42];
 
 void fatal()
 {
@@ -99,7 +99,7 @@ void add_client()
 
 void rm_client(int fd)
 {
-	t_client	*to_del;
+	t_client	*to_del = NULL;
 
 	bzero(&buff, sizeof(buff));
 	sprintf(buff, "server: client %d just left\n", get_id(fd));
@@ -120,7 +120,8 @@ void rm_client(int fd)
 			tmp->next = tmp->next->next;
 		}
 	}
-	free(to_del);
+	if (to_del)
+		free(to_del);
 	FD_CLR(fd, &sockets);
 	close(fd);
 }
@@ -128,8 +129,7 @@ void rm_client(int fd)
 void extract_msg(int fd)
 {
 	char	tmp[42*4096];
-	int		i = 0;
-	int		j = 0;
+	int		i = 0, j = 0;
 
 	bzero(&tmp, sizeof(tmp));
 	while (msg[i])
@@ -156,20 +156,17 @@ int main(int ac, char **av)
 		write(2, "Wrong number of arguments\n", strlen("Wrong number of arguments\n"));
 		exit(1);
 	}
-
 	struct sockaddr_in	servaddr;
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
 	servaddr.sin_port = htons(atoi(av[1]));
-
 	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 		fatal();
 	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
 		fatal();
 	if (listen(sockfd, 128) != 0)
 		fatal();
-
 	FD_ZERO(&sockets);
 	FD_SET(sockfd, &sockets);
 	bzero(&buff, sizeof(buff));
@@ -188,10 +185,10 @@ int main(int ac, char **av)
 					add_client();
 					break;
 				}
-				int	ret_recv = 1000;
-				while (ret_recv == 1000 || msg[strlen(msg) - 1] != '\n')
+				int	ret_recv = 1;
+				while (ret_recv == 1 && msg[strlen(msg) - 1] != '\n')
 				{
-					ret_recv = recv(fd, msg + strlen(msg), 1000, 0);
+					ret_recv = recv(fd, msg + strlen(msg), 1, 0);
 					if (ret_recv <= 0)
 						break ;
 				}
