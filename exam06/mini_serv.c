@@ -114,8 +114,11 @@ void rm_client(int fd)
 		t_client	*tmp = clients;
 		while (tmp && tmp->next && tmp->next->fd != fd)
 			tmp = tmp->next;
-		to_del = tmp->next;
-		tmp->next = tmp->next->next;
+		if (tmp && tmp->next && tmp->next->fd == fd)
+		{
+			to_del = tmp->next;
+			tmp->next = tmp->next->next;
+		}
 	}
 	free(to_del);
 	FD_CLR(fd, &sockets);
@@ -135,11 +138,11 @@ void extract_msg(int fd)
 		j++;
 		if (msg[i] == '\n')
 		{
+			bzero(&buff, sizeof(buff));
 			sprintf(buff, "client %d: %s", get_id(fd), tmp);
 			send_all(fd);
 			j = 0;
 			bzero(&tmp, sizeof(tmp));
-			bzero(&buff, sizeof(buff));
 		}
 		i++;
 	}
